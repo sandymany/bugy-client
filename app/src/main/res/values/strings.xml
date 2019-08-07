@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">bugy</string>
+    <string name="login_title">LogIn</string>
+    <string name="username_text">username:</string>
+    <string name="password_text">password:</string>
+    <string name="submit_button_text">submit</string>
+    <string name="register_button_text">register</string>
+</resources>
