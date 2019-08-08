@@ -6,4 +6,6 @@
     <string name="submit_button_text">submit</string>
     <string name="register_button_text">register</string>
     <string name="textMessage">nsmkms</string>
+    <string name="register_text">Register</string>
+    <string name="button_newAccount">New account</string>
 </resources>

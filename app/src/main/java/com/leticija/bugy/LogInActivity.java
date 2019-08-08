@@ -1,5 +1,6 @@
 package com.leticija.bugy;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.annotation.RequiresApi;
@@ -16,8 +17,6 @@ import java.io.IOException;
 public class LogInActivity extends AppCompatActivity {
 
     String TAG = "message";
-    String username;
-    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,30 +26,32 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final TextView textView = findViewById(R.id.textView4);
-
-        Button button = findViewById(R.id.button);
+        Button submitButton = findViewById(R.id.button);
+        Button registerButton = findViewById(R.id.button2);
         final EditText usernameText = findViewById(R.id.editText);
         final EditText passwordText = findViewById(R.id.editText2);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                System.out.println("ON CLICK!");
-                username = usernameText.getText().toString();
-                password = passwordText.getText().toString();
+                String username = usernameText.getText().toString();
+                String password = passwordText.getText().toString();
                 Enter login = new Enter(username,password);
-                try {
-                    System.out.println("sending credentials to server: "+LogInActivity.this.username+" "+LogInActivity.this.password);
-                    String serverResponse = login.logIn(textView);
-                    System.out.println("serverResponse: "+serverResponse);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                //Intent intent = new Intent(MainActivity.this, NewActivity.class);
-                //startActivity(intent);
+                System.out.println("sending credentials to server: "+username+" "+password);
+                String serverResponse = login.logIn(textView); //ako je login uspješan, server vrati session cookie. Kasnije bum morala parsati userovo stanje racuna
+                //System.out.println("serverResponse: "+serverResponse);
             }
         });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
     @Override
     protected void onStart() {

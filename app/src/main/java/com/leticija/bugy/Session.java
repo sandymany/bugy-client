@@ -2,11 +2,8 @@ package com.leticija.bugy;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -14,21 +11,26 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-import static java.lang.System.in;
-
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class Session {
 
     private static HttpURLConnection con;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static String sendCredentials(final String username, final String password) {
+    public static String sendCredentials(final String username, final String password,String what) {
 
         //1. PRETVORITI PARAMETRE U BYTEARRAY
 
         //2.USPOSTAVITI KONEKCIJU
+        String url;
 
-        String url = "http://192.168.53.26:8000/login";
+        if (what.equals("login")) {
+            url = "http://192.168.1.104:8000/login";
+        }
+        else {
+            url = "http://192.168.1.104:8000/register";
+        }
+
         String urlParameters = "username="+username+"&password="+password;
         byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
         try {
