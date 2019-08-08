@@ -2,7 +2,7 @@ package com.leticija.bugy;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-
+import android.widget.TextView;
 import java.io.IOException;
 
 public class Enter {
@@ -17,12 +17,17 @@ public class Enter {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public String logIn () throws IOException {
+    public String logIn (TextView textView) throws IOException {
         sessionCookie = Session.sendCredentials(username,password);
-        if(!(sessionCookie.equals("false"))) {
-            return ("successfully logged in !");
+        if(!(sessionCookie.equals("false".trim()))) {
+            System.out.println("SESSION COOKIE: "+sessionCookie);
+            System.out.println("LOGGING YOU IN");
+            InterfaceFeatures.changeTextViewVisibility(textView,true,"Login successful!",R.color.success);
+            return (sessionCookie);
         }
-        return ("Sorry, gotta register first!");
+        System.out.println("#######WRONG########");
+        InterfaceFeatures.changeTextViewVisibility(textView,true,"Invalid credentials.\nTry to register first.",R.color.warning);
+        return ("false");
     }
 
 

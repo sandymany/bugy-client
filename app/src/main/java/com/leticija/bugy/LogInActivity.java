@@ -1,7 +1,7 @@
 package com.leticija.bugy;
 
-import android.content.Intent;
 import android.os.Build;
+import android.os.StrictMode;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -21,12 +22,14 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_main);
 
+        final TextView textView = findViewById(R.id.textView4);
+
         Button button = findViewById(R.id.button);
-        //get username from editText
         final EditText usernameText = findViewById(R.id.editText);
-        //get password from editText2
         final EditText passwordText = findViewById(R.id.editText2);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -38,12 +41,12 @@ public class LogInActivity extends AppCompatActivity {
                 password = passwordText.getText().toString();
                 Enter login = new Enter(username,password);
                 try {
-                    String serverResponse = login.logIn();
-                    System.out.println(serverResponse);
+                    System.out.println("sending credentials to server: "+LogInActivity.this.username+" "+LogInActivity.this.password);
+                    String serverResponse = login.logIn(textView);
+                    System.out.println("serverResponse: "+serverResponse);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("sending credentials to server: "+LogInActivity.this.username+" "+LogInActivity.this.password);
                 //Intent intent = new Intent(MainActivity.this, NewActivity.class);
                 //startActivity(intent);
             }
