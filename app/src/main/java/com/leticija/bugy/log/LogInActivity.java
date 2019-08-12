@@ -1,4 +1,4 @@
-package com.leticija.bugy;
+package com.leticija.bugy.log;
 
 import android.content.Intent;
 import android.os.Build;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.IOException;
+import com.leticija.bugy.R;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -40,7 +40,10 @@ public class LogInActivity extends AppCompatActivity {
                 Enter login = new Enter(username,password);
                 System.out.println("sending credentials to server: "+username+" "+password);
                 String serverResponse = login.logIn(textView); //ako je login uspješan, server vrati session cookie. Kasnije bum morala parsati userovo stanje racuna
-                //System.out.println("serverResponse: "+serverResponse);
+                //System.out.println("serverResponseAtLogin: "+serverResponse);
+                if(serverResponse != null) {
+                    System.out.println("GOING TO ANOTHER ACTIVITY!!!!!");
+                }
             }
         });
 
@@ -49,6 +52,7 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
                 startActivity(intent);
+
             }
         });
 

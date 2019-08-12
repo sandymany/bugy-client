@@ -1,4 +1,4 @@
-package com.leticija.bugy;
+package com.leticija.bugy.log;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -25,10 +25,10 @@ public class Session {
         String url;
 
         if (what.equals("login")) {
-            url = "http://192.168.1.104:8000/login";
+            url = "http://192.168.53.26:8000/login";
         }
         else {
-            url = "http://192.168.1.104:8000/register";
+            url = "http://192.168.53.26:8000/register";
         }
 
         String urlParameters = "username="+username+"&password="+password;

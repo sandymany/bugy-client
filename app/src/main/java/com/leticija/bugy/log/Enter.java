@@ -1,8 +1,10 @@
-package com.leticija.bugy;
+package com.leticija.bugy.log;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.widget.TextView;
+
+import com.leticija.bugy.R;
 
 public class Enter {
 
@@ -19,19 +21,17 @@ public class Enter {
     public String logIn (TextView textView) throws NullPointerException{
 
         sessionCookie = Session.sendCredentials(username,password,"login");
-        String toReturn;
         try {
             if (!(sessionCookie.equals("false".trim()))) {
                 System.out.println("SESSION COOKIE: " + sessionCookie);
                 System.out.println("LOGGING YOU IN");
                 InterfaceFeatures.changeTextViewVisibility(textView, true, "Login successful!", R.color.success);
                 return (sessionCookie);
-                //toReturn = sessionCookie;
             }
             System.out.println("####### WRONG ########");
             InterfaceFeatures.changeTextViewVisibility(textView, true, "Invalid credentials.\nTry to register first.", R.color.warning);
-            return ("false");
-            //toReturn = "false";
+            //return ("false");
+            return (null);
         } catch (NullPointerException ex) {
             ex.printStackTrace();
             InterfaceFeatures.changeTextViewVisibility(textView,true,"Sorry\nConnection is down",R.color.warning);
@@ -42,17 +42,21 @@ public class Enter {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String register (TextView textView) throws NullPointerException {
         sessionCookie = Session.sendCredentials(username,password,"register");
-
         try {
-
-            if (!(sessionCookie.equals("true".trim()))) {
-                System.out.println("REGISTRATION SUCCESSFUL! : " + sessionCookie);
-                InterfaceFeatures.changeTextViewVisibility(textView, true, "Successfully registered!", R.color.success);
-                return (sessionCookie);
+            if (sessionCookie.equals("false".trim())) {
+                InterfaceFeatures.changeTextViewVisibility(textView, true, "Credentials should\ncontain max 15 characters", R.color.warning);
+                //return (sessionCookie);
+                return (null);
             }
-            System.out.println("INVALID REGISTRATION");
-            InterfaceFeatures.changeTextViewVisibility(textView, true, "User already exists!", R.color.warning);
+            else if (sessionCookie.equals("true".trim())) {
+                InterfaceFeatures.changeTextViewVisibility(textView,true,"User already exists",R.color.warning);
+                //return (sessionCookie);
+                return (null);
+            }
+            System.out.println("REGISTRATION SUCCESSFUL! : " + sessionCookie);
+            InterfaceFeatures.changeTextViewVisibility(textView, true, "Login successful!", R.color.success);
             return (sessionCookie);
+
         } catch (NullPointerException ex) {
             InterfaceFeatures.changeTextViewVisibility(textView,true,"Sorry\nConnection is down",R.color.warning);
             ex.printStackTrace();
