@@ -1,26 +1,30 @@
 package com.leticija.bugy.log;
 
+import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.widget.TextView;
 
 import com.leticija.bugy.R;
+import com.leticija.bugy.InterfaceFeatures;
 
 public class Enter {
 
-    String sessionCookie;
-    String username;
-    String password;
+    public static String sessionCookie;
+    public static String username;
+    public static String password;
+    Context context;
 
-    Enter (String username, String password) {
+    Enter (String username, String password,Context context) {
         this.username = username;
         this.password = password;
+        this.context = context;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String logIn (TextView textView) throws NullPointerException{
 
-        sessionCookie = Session.sendCredentials(username,password,"login");
+        sessionCookie = Session.sendCredentials(context,username,password,"login");
         try {
             if (!(sessionCookie.equals("false".trim()))) {
                 System.out.println("SESSION COOKIE: " + sessionCookie);
@@ -41,7 +45,7 @@ public class Enter {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String register (TextView textView) throws NullPointerException {
-        sessionCookie = Session.sendCredentials(username,password,"register");
+        sessionCookie = Session.sendCredentials(context,username,password,"register");
         try {
             if (sessionCookie.equals("false".trim())) {
                 InterfaceFeatures.changeTextViewVisibility(textView, true, "Credentials should\ncontain max 15 characters", R.color.warning);
@@ -54,7 +58,7 @@ public class Enter {
                 return (null);
             }
             System.out.println("REGISTRATION SUCCESSFUL! : " + sessionCookie);
-            InterfaceFeatures.changeTextViewVisibility(textView, true, "Login successful!", R.color.success);
+            InterfaceFeatures.changeTextViewVisibility(textView, true, "Registration successful!", R.color.success);
             return (sessionCookie);
 
         } catch (NullPointerException ex) {

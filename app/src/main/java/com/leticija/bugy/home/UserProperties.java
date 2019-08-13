@@ -1,4 +1,4 @@
-package com.leticija.bugy.log;
+package com.leticija.bugy.home;
 
 import android.content.Context;
 import android.os.Build;
@@ -15,21 +15,26 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-public class Session {
+public class UserProperties {
 
+    static String username;
+    static String password;
+    String sessionCookie;
     private static HttpURLConnection con;
+    Context context;
+
+    UserProperties(String sessionCookie,Context context) {
+        this.sessionCookie = sessionCookie;
+        this.context = context;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static String sendCredentials(Context context,final String username, final String password,String what) {
+    public String getProperties () {
 
-        //1. PRETVORITI PARAMETRE U BYTEARRAY
+        String url;
+        url = context.getString(R.string.base_ip)+"/home/getProperties";
 
-        //2.USPOSTAVITI KONEKCIJU
-        String url = context.getString(R.string.base_ip)+"/"+what;
-        System.out.println("IP: "+url);
-
-        String urlParameters = "username="+username+"&password="+password;
+        String urlParameters = "sessionCookie=" + sessionCookie;
         byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
         try {
             URL myurl = new URL(url);
@@ -45,10 +50,10 @@ public class Session {
             wr.write(postData);
 
             Scanner in = new Scanner(con.getInputStream());
-                in.useDelimiter("\\A");
-                if (in.hasNext()) {
-                    return in.next();
-                }
+            in.useDelimiter("\\A");
+            if (in.hasNext()) {
+                return(in.next());
+            }
         } catch (ProtocolException e1) {
             e1.printStackTrace();
         } catch (MalformedURLException e1) {

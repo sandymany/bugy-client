@@ -1,4 +1,4 @@
-package com.leticija.bugy.log;
+package com.leticija.bugy;
 
 import android.support.v4.content.ContextCompat;
 import android.view.View;

@@ -1,5 +1,6 @@
 package com.leticija.bugy.log;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.leticija.bugy.R;
+import com.leticija.bugy.home.HomeActivity;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -24,6 +26,9 @@ public class LogInActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_main);
+
+        final Context context = getApplicationContext();
+
 
         final TextView textView = findViewById(R.id.textView4);
         Button submitButton = findViewById(R.id.button);
@@ -37,12 +42,15 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = usernameText.getText().toString();
                 String password = passwordText.getText().toString();
-                Enter login = new Enter(username,password);
+                Enter login = new Enter(username,password,context);
                 System.out.println("sending credentials to server: "+username+" "+password);
                 String serverResponse = login.logIn(textView); //ako je login uspješan, server vrati session cookie. Kasnije bum morala parsati userovo stanje racuna
                 //System.out.println("serverResponseAtLogin: "+serverResponse);
                 if(serverResponse != null) {
-                    System.out.println("GOING TO ANOTHER ACTIVITY!!!!!");
+                    System.out.println("GOING TO ANOTHER ACTIVITY!!!!! "+serverResponse);
+                    Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
+                    //intent.putExtra("sessionCookie",serverResponse);
+                    startActivity(intent);
                 }
             }
         });

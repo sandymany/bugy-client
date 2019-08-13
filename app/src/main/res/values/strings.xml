@@ -8,4 +8,7 @@
     <string name="textMessage">nsmkms</string>
     <string name="register_text">Register</string>
     <string name="button_newAccount">New account</string>
+    <string name="add_bugs">ADD BUGS</string>
+    <string name="my_collection">MY COLLECTION</string>
+    <string name="base_ip">http://192.168.53.26:8000</string>
 </resources>
