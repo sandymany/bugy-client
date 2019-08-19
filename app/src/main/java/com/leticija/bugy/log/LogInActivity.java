@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.annotation.RequiresApi;
+import android.support.constraint.Group;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,12 +30,15 @@ public class LogInActivity extends AppCompatActivity {
 
         final Context context = getApplicationContext();
 
+        //ne smije se videti ikona usera i "welcome"
+        Group welcomeGroup = findViewById(R.id.groupWelcome);
+        welcomeGroup.setVisibility(View.INVISIBLE);
 
         final TextView textView = findViewById(R.id.textView4);
         Button submitButton = findViewById(R.id.button);
         Button registerButton = findViewById(R.id.button2);
-        final EditText usernameText = findViewById(R.id.editText);
-        final EditText passwordText = findViewById(R.id.editText2);
+        final EditText usernameText = findViewById(R.id.username_input);
+        final EditText passwordText = findViewById(R.id.password_input);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -45,11 +49,9 @@ public class LogInActivity extends AppCompatActivity {
                 Enter login = new Enter(username,password,context);
                 System.out.println("sending credentials to server: "+username+" "+password);
                 String serverResponse = login.logIn(textView); //ako je login uspješan, server vrati session cookie. Kasnije bum morala parsati userovo stanje racuna
-                //System.out.println("serverResponseAtLogin: "+serverResponse);
                 if(serverResponse != null) {
-                    System.out.println("GOING TO ANOTHER ACTIVITY!!!!! "+serverResponse);
+                    System.out.println("GOING TO ANOTHER ACTIVITY FROM LoginActivity "+serverResponse);
                     Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
-                    //intent.putExtra("sessionCookie",serverResponse);
                     startActivity(intent);
                 }
             }

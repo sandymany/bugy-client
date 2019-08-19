@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#b9f0da</color>
+    <color name="colorToolbar">#88ECCA</color>
     <color name="colorAccent">#D81B60</color>
     <color name="warning">#b32b2b</color>
     <color name="success">#0fbf41</color>
-    <color name="button_green">#72d678</color>
+    <color name="button_green">#b9f0da</color>
     <color name="dark_green_text">#3b5246</color>
     <color name="black">#000000</color>
+    <color name="hint_text">#b9f0da</color>>
 </resources>

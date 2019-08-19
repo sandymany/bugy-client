@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.constraint.Group;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -23,10 +24,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         final Context context = getApplicationContext();
 
+        //user i welcome se ne smiju videti, samo toolbar
+        Group welcomeGroup = findViewById(R.id.groupWelcome);
+        welcomeGroup.setVisibility(View.INVISIBLE);
+
 
         Button registerButton = findViewById(R.id.button3);
-        final EditText usernameText = findViewById(R.id.editText3);
-        final EditText passwordText = findViewById(R.id.editText4);
+        final EditText usernameText = findViewById(R.id.username_input);
+        final EditText passwordText = findViewById(R.id.password_input);
         final TextView textView = findViewById(R.id.textView8);
 
         registerButton.setOnClickListener(new View.OnClickListener() {

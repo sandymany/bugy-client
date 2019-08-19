@@ -18,6 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     String password = Enter.password;
     String username = Enter.username;
 
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +29,16 @@ public class HomeActivity extends AppCompatActivity {
 
         Context context = getApplicationContext();
 
-        TextView homeText = findViewById(R.id.textView9);
-        InterfaceFeatures.changeTextViewVisibility(homeText,true,"Welcome "+username,R.color.black);
+        //postaviti welcome text na toolbaru da je visible
+        TextView homeText = findViewById(R.id.text_welcome);
+        InterfaceFeatures.changeTextViewVisibility(homeText,true,username,R.color.black);
 
         System.out.println("PASSED SESSION COOKIE: "+sessionCookie);
-        UserProperties properties = new UserProperties(sessionCookie,context);
-        System.out.println(properties.getProperties());
+        UserProperties properties = new UserProperties(sessionCookie,context); //zahtjeva da mu server da stanje racuna od korisnika s određenim sessionCookijem
+        System.out.println("GOT PROPERTIES: "+properties.getProperties());
+        //Intent intent = new Intent(HomeActivity.this, AddBugsActivity.class);
+        //startActivity(intent);
+
 
     }
 

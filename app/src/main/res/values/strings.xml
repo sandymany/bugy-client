@@ -11,4 +11,10 @@
     <string name="add_bugs">ADD BUGS</string>
     <string name="my_collection">MY COLLECTION</string>
     <string name="base_ip">http://192.168.53.26:8000</string>
+    <string name="settings_text">SETTINGS</string>
+
+    <string-array name="dropdown_menu_items">
+        <item>Profile</item>
+        <item>Settings</item>
+    </string-array>
 </resources>
