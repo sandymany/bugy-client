@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">bugy</string>
+    <string name="app_name">BUGY</string>
     <string name="login_title">LogIn</string>
     <string name="username_text">username:</string>
     <string name="password_text">password:</string>
