@@ -1,11 +1,8 @@
 package com.leticija.bugy.home;
 
-public class ResponseCheck {
+public class ResponseCheck{
 
-    public boolean isResponseValid (String response) {
-        if (!(response.trim().equals("false"))) {
-            return true;
-        }
-        return false;
+    public static boolean isResponseValid (String response) {
+        return !response.trim().equals("false");
     }
 }

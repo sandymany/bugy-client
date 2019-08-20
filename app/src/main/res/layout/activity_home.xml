@@ -13,7 +13,7 @@
         tools:layout_editor_absoluteX="16dp"/>
 
     <android.support.design.internal.FlowLayout
-        android:id="@+id/flow_layout1"
+        android:id="@+id/Home_flowLayout"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
@@ -33,13 +33,13 @@
         app:layout_constraintVertical_bias="0.0">
 
         <android.support.v7.widget.LinearLayoutCompat
-            android:id="@+id/layout_viewCollection"
+            android:id="@+id/viewCollection_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/viewCollection_button"
                 android:layout_width="108dp"
                 android:layout_height="105dp"
                 android:layout_marginStart="8dp"
@@ -53,7 +53,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/viewCollection_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -61,18 +61,17 @@
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
         </android.support.v7.widget.LinearLayoutCompat>
 
 
         <android.support.v7.widget.LinearLayoutCompat
-            android:id="@+id/layout_addBugs"
+            android:id="@+id/addBugs_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/addBugs_button"
                 android:layout_width="108dp"
                 android:layout_height="105dp"
                 android:layout_marginStart="8dp"
@@ -86,7 +85,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/addBugs_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -94,17 +93,16 @@
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
         </android.support.v7.widget.LinearLayoutCompat>
 
         <android.support.v7.widget.LinearLayoutCompat
-            android:id="@+id/layout_settings"
+            android:id="@+id/settings_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/settings_button"
                 android:layout_width="108dp"
                 android:layout_height="105dp"
                 android:layout_marginStart="8dp"
@@ -118,7 +116,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/settings_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -126,14 +124,8 @@
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
         </android.support.v7.widget.LinearLayoutCompat>
 
-
     </android.support.design.internal.FlowLayout>
-
-
-
-
 
 </android.support.constraint.ConstraintLayout>

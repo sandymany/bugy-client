@@ -12,6 +12,8 @@
     <string name="my_collection">MY COLLECTION</string>
     <string name="base_ip">http://192.168.53.26:8000</string>
     <string name="settings_text">SETTINGS</string>
+    <string name="add_by_search">ADD BY SEARCH</string>
+    <string name="custom_add_text">CUSTOM ADD</string>
 
     <string-array name="dropdown_menu_items">
         <item>Profile</item>
