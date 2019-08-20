@@ -15,7 +15,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class UserProperties {
+public class UserProperties extends ResponseCheck {
 
     String sessionCookie;
     private static HttpURLConnection con;
@@ -57,6 +57,7 @@ public class UserProperties {
                     if (in.hasNext()) {
                         properties = in.next();
                         System.out.println("I GOT RESPONSE: "+properties);
+                        System.out.println("RESPONSE IS "+isResponseValid(properties));
                         //return (in.next());
                     }
                 } catch (ProtocolException e1) {

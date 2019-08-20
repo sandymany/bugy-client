@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //postaviti welcome text na toolbaru da je visible
         TextView homeText = findViewById(R.id.text_welcome);
-        InterfaceFeatures.changeTextViewVisibility(homeText,true,username,R.color.black);
+        InterfaceFeatures.changeTextViewVisibility(homeText,true,username,R.color.dark_green_text);
 
         System.out.println("PASSED SESSION COOKIE: "+sessionCookie);
         UserProperties properties = new UserProperties(sessionCookie,context); //zahtjeva da mu server da stanje racuna od korisnika s određenim sessionCookijem
