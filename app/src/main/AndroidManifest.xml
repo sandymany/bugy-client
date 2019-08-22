@@ -23,6 +23,7 @@
         <activity android:name=".log.RegisterActivity"/>
         <activity android:name=".home.HomeActivity"/>
         <activity android:name=".home.AddBugsActivity"/>
+        <activity android:name=".home.AddBySearch"/>
     </application>
 
 </manifest>
